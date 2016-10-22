@@ -1,6 +1,6 @@
 var sumo = require('node-sumo');
 
-var drone = sumo.createClient({ip: '192.168.1.1'});
+var drone = sumo.createClient({ip: '192.168.1.30'});
 
 var step=0;
 
