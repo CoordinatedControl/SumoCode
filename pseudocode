@@ -1,0 +1,22 @@
+while not found:
+    drone.forward
+    distance = calculateDist()
+    if distance > oldDist:
+        if right==False:
+            drone.backward
+            drone.right
+            right=True
+        else if left==False:
+            drone.backward
+            drone.left
+            drone.left
+            left=True
+        else if right==True && left==True:
+            drone.backward
+            drone.left
+    else if distance < oldDist:
+        right=False
+        left=False
+    else if distance==0:
+        found=True
+    oldDist = distance
