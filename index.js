@@ -6,20 +6,27 @@ drone.connect(function() {
     console.log('Connected');
     drone.postureJumper();
 
-    /*    var interval = setInterval(function() {
-            drone.left(50);
-            setTimeout(function() {
-                drone.forward(10);
-            }, 315);
-        }, 2200);*/
-/*    function findSignal(x1, y1, x2, y2) {
-        return Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
-    }*/
+    /*
+    var interval = setInterval(function() {
+        drone.left(50);
+        setTimeout(function() {
+            drone.forward(10);
+        }, 315);
+    }, 2200);
+    */
 
-/*    var targetX=3;
+    /*  
+    function findSignal(x1, y1, x2, y2) {
+        return Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
+    }
+    */
+
+    /*
+    var targetX=3;
     var targetY=2;
     var x=0;
-    var y=0;*/
+    var y=0;
+    */
     var list = [5,4,3,9,10,20,2,0];
 
 
@@ -37,20 +44,12 @@ drone.connect(function() {
     var step=0;
 
     var interval = setInterval(function() {
-/*        console.log(x);
-        console.log(y);
-        console.log(targetX);
-        console.log(targetY);
-        console.log('---');
-*/      
-
         drone.forward(forwardSpeed);
         console.log('\nfwd');
         step++;
 
-        //var signal = findSignal(x,y,targetX,targetY);
+        // var signal = findSignal(x,y,targetX,targetY);
         var signal = list[step];
-
 
         if (signal == 0) {
             // what to do.
@@ -60,7 +59,6 @@ drone.connect(function() {
             console.log("found");
         } else if (signal > oldSignal) {
             if (moveRight == false) {
-
                 drone.backward(forwardSpeed);
 
                 setTimeout(function() {
@@ -73,7 +71,7 @@ drone.connect(function() {
                 }, forwardTime);
                 
                 console.log('right');
-                //x++;
+                // x++;
 
             } else if (moveLeft == false) {
 
@@ -81,7 +79,7 @@ drone.connect(function() {
 
                 setTimeout(function() {
                     drone.left(turnSpeed);
-                    //drone.left(turnSpeed);
+                    // drone.left(turnSpeed);
                     moveLeft = true;
 
                     setTimeout(function() {
@@ -90,7 +88,7 @@ drone.connect(function() {
                 }, forwardTime);
                 
                 console.log('left');
-                //x--;
+                // x--;
 
             } else if (moveRight == true && moveLeft == true) {
 
@@ -106,26 +104,22 @@ drone.connect(function() {
                 }, forwardTime);
                 
                 console.log('bck');
-                //y--;
+                // y--;
             }
         } else if (signal < oldSignal) {
             moveRight = false;
             moveLeft = false;
 
-            //y++;
+            // y++;
         }
 
         oldSignal = signal;
     }, 2*forwardTime+2*turnTime+1000);
 
-
-
-
-
-
-
-    /*setTimeout(function() {
+    /*
+    setTimeout(function() {
         clearInterval(interval);
         drone.stop();
-    }, 20000);*/
+    }, 20000);
+    */
 });
